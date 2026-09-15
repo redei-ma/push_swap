@@ -13,7 +13,7 @@
  * Positive means rb, negative means rrb. Elements in the lower half are
  * reported as negative because reaching them backwards costs less.
  */
-int	ft_weight_b(t_node *head_b, int i)
+static int	ft_weight_b(t_node *head_b, int i)
 {
 	int		weight;
 	int		size_b;
@@ -72,24 +72,6 @@ int	ft_weight_a(t_node *head_a, int val_b)
 	return (weight);
 }
 
-void	ft_algo(t_node **head_a, t_node **head_b)
-{
-	int		moves[3];
-	int		i;
-	t_node	*tmp_b;
-
-	tmp_b = *head_b;
-	i = 0;
-	moves[2] = -1;
-	while (tmp_b)
-	{
-		ft_weight_tot(head_a, &tmp_b, moves, i);
-		i++;
-		tmp_b = tmp_b->next;
-	}
-	make_move(moves, head_a, head_b);
-}
-
 /**
  * Prices one candidate and keeps it in moves if it is the cheapest so far.
  *
@@ -104,7 +86,7 @@ void	ft_algo(t_node **head_a, t_node **head_b)
  * moves[2] starts at -1 to mean "nothing priced yet", which is why the
  * comparison tests for it instead of relying on a large initial value.
  */
-void	ft_weight_tot(t_node **head_a, t_node **head_b, int *moves, int i)
+static void	ft_weight_tot(t_node **head_a, t_node **head_b, int *moves, int i)
 {
 	int	tmp_moves[3];
 
@@ -128,4 +110,22 @@ void	ft_weight_tot(t_node **head_a, t_node **head_b, int *moves, int i)
 		tmp_moves[2] = ft_abs(tmp_moves[0]) + ft_abs(tmp_moves[1]);
 	if (ft_abs(tmp_moves[2]) < moves[2] || moves[2] == -1)
 		set_weights(moves, tmp_moves);
+}
+
+void	ft_algo(t_node **head_a, t_node **head_b)
+{
+	int		moves[3];
+	int		i;
+	t_node	*tmp_b;
+
+	tmp_b = *head_b;
+	i = 0;
+	moves[2] = -1;
+	while (tmp_b)
+	{
+		ft_weight_tot(head_a, &tmp_b, moves, i);
+		i++;
+		tmp_b = tmp_b->next;
+	}
+	make_move(moves, head_a, head_b);
 }

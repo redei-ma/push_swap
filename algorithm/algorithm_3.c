@@ -38,34 +38,7 @@ void	sort_three(t_node **head_a)
 		return ;
 }
 
-void	make_move(int *moves, t_node **head_a, t_node **head_b)
-{
-	while (moves[0] != 0 && moves[1] != 0)
-		move_double(moves, head_a, head_b);
-	while (moves[0] != 0 || moves[1] != 0)
-		move_single(moves, head_a, head_b);
-	ft_pa(head_a, head_b);
-}
-
-void	move_double(int *moves, t_node **head_a, t_node **head_b)
-{
-	if (moves[0] > 0 && moves[1] > 0)
-	{
-		ft_rr(head_a, head_b);
-		moves[0]--;
-		moves[1]--;
-	}
-	else if (moves[0] < 0 && moves[1] < 0)
-	{
-		ft_rrr(head_a, head_b);
-		moves[0]++;
-		moves[1]++;
-	}
-	else
-		move_single(moves, head_a, head_b);
-}
-
-void	move_single(int *moves, t_node **head_a, t_node **head_b)
+static void	move_single(int *moves, t_node **head_a, t_node **head_b)
 {
 	if (moves[0] > 0)
 	{
@@ -87,4 +60,31 @@ void	move_single(int *moves, t_node **head_a, t_node **head_b)
 		ft_rrb(head_b);
 		moves[1]++;
 	}
+}
+
+static void	move_double(int *moves, t_node **head_a, t_node **head_b)
+{
+	if (moves[0] > 0 && moves[1] > 0)
+	{
+		ft_rr(head_a, head_b);
+		moves[0]--;
+		moves[1]--;
+	}
+	else if (moves[0] < 0 && moves[1] < 0)
+	{
+		ft_rrr(head_a, head_b);
+		moves[0]++;
+		moves[1]++;
+	}
+	else
+		move_single(moves, head_a, head_b);
+}
+
+void	make_move(int *moves, t_node **head_a, t_node **head_b)
+{
+	while (moves[0] != 0 && moves[1] != 0)
+		move_double(moves, head_a, head_b);
+	while (moves[0] != 0 || moves[1] != 0)
+		move_single(moves, head_a, head_b);
+	ft_pa(head_a, head_b);
 }

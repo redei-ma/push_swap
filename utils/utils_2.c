@@ -24,7 +24,7 @@ int	ft_freelst(t_node **head_a, t_node **head_b)
 	return (0);
 }
 
-t_node	*ft_nlstnew(char *av)
+static t_node	*ft_nlstnew(char *av)
 {
 	int		content;
 	t_node	*node;

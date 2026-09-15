@@ -1,6 +1,6 @@
 #include "push_swap_bonus.h"
 
-int	custom_move(t_node **head_a, t_node **head_b, char *line, int *check)
+static int	custom_move(t_node **head_a, t_node **head_b, char *line, int *check)
 {
 	if (ft_strncmp(line, "sa\n", 3) == 0)
 		return (ft_swap(head_a));
@@ -28,7 +28,7 @@ int	custom_move(t_node **head_a, t_node **head_b, char *line, int *check)
 	return (0);
 }
 
-void	write_finish(t_node *head_a, t_node *head_b)
+static void	write_finish(t_node *head_a, t_node *head_b)
 {
 	if (check_finish(head_a, head_b) == 0)
 		write(1, "KO\n", 3);

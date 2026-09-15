@@ -3,8 +3,6 @@
 
 # include "push_swap.h"
 
-int		custom_move(t_node **head_a, t_node **head_b, char *line, int *check);
-void	write_finish(t_node *head_a, t_node *head_b);
 
 int		ft_swap(t_node **head);
 int		ft_swap_double(t_node **head_a, t_node **head_b);

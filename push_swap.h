@@ -11,19 +11,15 @@ typedef struct s_node
 }	t_node;
 
 void	ft_sort(t_node **head_a, t_node **head_b);
-void	ft_weight_tot(t_node **head_a, t_node **head_b, int *moves, int i);
 void	ft_algo(t_node **head_a, t_node **head_b);
 void	set_weights(int *moves, int *tmp_moves);
 
 void	tidy_up(t_node **head_a);
-int		ft_weight_b(t_node *head_b, int i);
 int		ft_weight_a(t_node *head_a, int val_b);
 int		pos_calc(t_node	*head, int num, int size);
 
 void	sort_three(t_node **head_a);
 void	make_move(int *moves, t_node **head_a, t_node **head_b);
-void	move_double(int *moves, t_node **head_a, t_node **head_b);
-void	move_single(int *moves, t_node **head_a, t_node **head_b);
 
 void	ft_sa(t_node **head_a);
 void	ft_sb(t_node **head_b);
@@ -45,7 +41,6 @@ int		check_finish(t_node *head_a, t_node *head_b);
 int		checkduplicate(t_node *lst);
 
 int		ft_freelst(t_node **head_a, t_node **head_b);
-t_node	*ft_nlstnew(char *av);
 t_node	*ft_lstcreation(char **av);
 int		ft_lstsize_push(t_node *lst);
 
